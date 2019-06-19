@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -o verbose
+
 sudo apt-get  update
 # if git exits should not be reinstalled
 if [[ -x "$command -v git" ]]; then
