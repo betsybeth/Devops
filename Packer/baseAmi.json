@@ -1,0 +1,33 @@
+{
+    "variables": {
+        "aws_access_key": "xxxxxxxxxxxx",
+        "aws_secret_key": "xxxxxxxxxxxxxxx",
+        "instance_type": "xxxxxxxxxx",
+        "region": "us-east-2",
+        "vpc_id": "xxxxxxxxx",
+        "subnet_id": "xxxxxxxxx",
+        "security_group_id": "xxxxxxxxxxxx"
+      },
+      "builders": [
+        {
+          "type": "amazon-ebs",
+          "access_key": "{{user `aws_access_key`}}",
+          "secret_key": "{{user `aws_secret_key`}}",
+          "region": "{{user `us-east-2`}}",
+          "vpc_id": "{{user `vpc_id`}}",
+          "subnet_id": "{{user `subnet_id`}}",
+          "associate_public_ip_address": true,
+          "security_group_id": "{{user `security_group_id`}}",
+          "source_ami": "ami-0c55b159cbfafe1f0",
+          "instance_type": "{{user `instance_type`}}",
+          "ssh_username": "ubuntu",
+          "ami_name": "ubuntu-base-ami-{{isotime \"2006-01-02-1504\"}}",
+          "ami_groups": "all"
+        
+        }] ,
+    "Provisioners":[{
+        "type": "shell",
+        "script": "../frontend_setup.sh"
+
+    }]
+}
